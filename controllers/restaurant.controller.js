@@ -14,3 +14,18 @@ exports.createRestaurant = async (req, res) => {
         return res.status(500).send('Some error occurred while creating the Restaurant');
     }
 }
+
+exports.getRestaurants = async (req, res) => {
+    const successMsg = "Restaurants fetched successfully.";
+    try {
+        const restaurants = await Restaurant.find();
+        console.log(restaurants);
+        return res.status(200).send(
+            {
+                "restaurants": restaurants,
+                "message" : successMsg
+            });
+    } catch (ex) {
+        return res.status(500).send('Some error occured while fetching the Restaurants.')
+    }
+}
