@@ -6,4 +6,7 @@ module.exports = function(app) {
     app.route('/api/restaurant/categories/:categoryName').get(restaurantHandler.getRestaurantsByCategory);
     app.route('/api/restaurant/:id').get(restaurantHandler.getRestaurantById);
     app.route('/api/restaurant/rating/:ratingValue').get(restaurantHandler.getRestaurantsByRating);
+    app.route('/api/restaurant/:id').put(restaurantHandler.updateRestaurantById);
+    app.route('/api/restaurant/:id').delete(restaurantHandler.deleteRestaurantById);
+    app.route('/api/restaurant/').delete(restaurantHandler.deleteAllRestaurants);
 }
