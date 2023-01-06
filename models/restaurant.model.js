@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Create a schema for Products
+// Create a schema for Restaurants
 const restaurantSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,7 +31,7 @@ const restaurantSchema = new mongoose.Schema({
     },
   }, { timestamps: true })
 
-// Create a model for Products
+// Create a model for Restaurants
 exports.Restaurant = mongoose.model(
   "restaurant", restaurantSchema
 );

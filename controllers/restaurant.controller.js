@@ -1,6 +1,6 @@
 const { Restaurant } = require('../models/restaurant.model');
-const restaurantRoutes = require('../routes/restaurant.routes');
 
+// add restaurant to the collection
 exports.createRestaurant = async (req, res) => {
     const reqRestaurant = req.body;
 
@@ -16,6 +16,7 @@ exports.createRestaurant = async (req, res) => {
     }
 }
 
+// get all restaurants from collection
 exports.getRestaurants = async (req, res) => {
     const successMsg = "Restaurants fetched successfully.";
     try {
@@ -30,6 +31,7 @@ exports.getRestaurants = async (req, res) => {
     }
 }
 
+// get all distinct categories of restaurants
 exports.getCategories = async (req, res) => {
     try {
         const categories = await Restaurant.find().select("category").distinct("category");
@@ -39,6 +41,7 @@ exports.getCategories = async (req, res) => {
     }
 }
 
+// get restaruants by category provided
 exports.getRestaurantsByCategory = async (req, res) => {
     try {
         const categoryName = "^"+req.params.categoryName+"$";
@@ -49,6 +52,7 @@ exports.getRestaurantsByCategory = async (req, res) => {
     }
 }
 
+// get restaurant by id provided
 exports.getRestaurantById = async (req, res) => {
     try {
         const id = req.params.id;
@@ -66,6 +70,7 @@ exports.getRestaurantById = async (req, res) => {
     }
 }
 
+// get restaurants with rating greater than and equal to the rating provided in request param
 exports.getRestaurantsByRating = async (req, res) => {
     try {
         const rating = req.params.ratingValue;
@@ -76,6 +81,7 @@ exports.getRestaurantsByRating = async (req, res) => {
     }
 }
 
+// update restaurant by id
 exports.updateRestaurantById = async (req, res) => {
     try {
         const id = req.params.id;
@@ -107,6 +113,7 @@ exports.updateRestaurantById = async (req, res) => {
     }
 }
 
+// delete restaurant by id provided
 exports.deleteRestaurantById = async (req, res) => {
     const id = req.params.id;
     try {
@@ -121,6 +128,7 @@ exports.deleteRestaurantById = async (req, res) => {
     }
 }
 
+// delete all the restaurants from collection
 exports.deleteAllRestaurants = async (req, res) => {
     try {
         const result = await Restaurant.deleteMany();
